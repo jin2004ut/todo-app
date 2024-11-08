@@ -1,0 +1,20 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator nestgraphql {
+    provider = "prisma-nestjs-graphql"
+    output = "../src/@generated/prisma-nestjs-graphql"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Todo {
+  id    Int     @default(autoincrement()) @id
+  title String
+  content  String?
+  deadline DateTime?
+}
